@@ -185,12 +185,11 @@ function Schedule(person) {
             timeBtn.disabled = true
           }
           timeBtn.addEventListener("click", () => {
-            // evvelki secilmis saat varsa rengi cixart
+
             let allTimeBtn = document.querySelectorAll(".times button")
             allTimeBtn.forEach(e => {
               e.classList.remove("select")
             })
-            // yeni secilmis saat
             selectTime = e.time
             timeBtn.classList.add("select")
           })
@@ -201,8 +200,6 @@ function Schedule(person) {
     })
   })
 }
-
-
 
 
 let deleteBtn = document.querySelector(".delete-btn")
@@ -239,19 +236,6 @@ payCard.addEventListener("click", () => {
   selectService.forEach(e => {
     serviceNames.push(e.querySelector("span").innerHTML)
   })
-
-  let myReservation = {
-    master: document.querySelector(".profileName").innerHTML,
-    userName,
-    userEmail: document.querySelector(".userEmail").value,
-    // userContact,
-    services: serviceNames,
-    date: dateSelect.textContent,
-    time: timeSelect.textContent,
-  }
-  localStorage.setItem("myReservation", JSON.stringify(myReservation))
-
-
   document.querySelector(".receiptServices").innerHTML = serviceNames.join(", ")
   document.querySelector(".userReceipt").innerHTML = userName
   document.querySelector(".userContactReceipt").innerHTML = userContact
@@ -260,8 +244,6 @@ payCard.addEventListener("click", () => {
   document.querySelector(".receiptDate").innerHTML = `📅 ${dateSelect.textContent} 🕐 ${timeSelect.textContent}`
   let sumEnd = Number(document.querySelector("#sum-price").innerHTML)
   document.querySelector(".receipTotal").innerHTML = (((sumEnd * 5) / 100) + sumEnd) + " AZN"
-
-
 
   reserveCard.style.display = "none"
   receiptCard.style.display = "flex"
